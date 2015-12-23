@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#eb413d"
+    android:orientation="horizontal"
+   >
+
+    <ImageView 
+    	android:layout_width="45dp"
+    	android:layout_height="45dp"
+    	android:src="@drawable/logo"
+    	android:paddingLeft="8dp"/>
+
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="horizontal"
+	    android:gravity="right">
+	    
+	    <Button
+	        android:id="@+id/btnBell"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bell"
+            android:layout_gravity="center_vertical"/>
+	    
+        <Button
+            android:id="@+id/btnOption"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/btnBell"
+            android:text="▽"
+            android:textColor="#ffffff"
+            android:background="#eb413d" 
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+</LinearLayout>

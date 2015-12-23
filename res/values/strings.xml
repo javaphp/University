@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">高校集</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="nav_desc">nav_desc</string>
+	<string name="common_intro">common_intro</string>
+	<string name="launch_intro">launch_intro</string>
+	<string name="launch_click_me">launch_click_me</string>
+</resources>
