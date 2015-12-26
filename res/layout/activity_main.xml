@@ -32,7 +32,7 @@
                     android:background="#F2F2F2"
                     android:orientation="horizontal" >
                 </RadioGroup>
-
+              
                 <ImageView
                     android:id="@+id/iv_nav_indicator"
                     android:layout_width="1dip"
@@ -41,6 +41,8 @@
                     android:background="#5AB0EB"
                     android:contentDescription="@string/nav_desc"
                     android:scaleType="matrix" />
+                
+                
             </RelativeLayout>
         </com.example.view.SyncHorizontalScrollView>
 
@@ -67,17 +69,34 @@
             android:src="@drawable/nav_right"
             android:visibility="visible" >
         </ImageView>
+        
+        
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
-        android:layout_width="wrap_content"
+    <RelativeLayout 
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/rl_tab"
-        android:layout_gravity="center"
-        android:background="#ffffff"
-        android:flipInterval="30"
-        android:persistentDrawingCache="animation" />
+        android:layout_below="@id/rl_tab"> 
+        
+        <com.example.view.GifView 
+            android:id="@+id/ivLoading" 
+            android:layout_width="100dp" 
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:enabled="false">
+        </com.example.view.GifView>
+            
+        
+	    <android.support.v4.view.ViewPager
+	        android:id="@+id/mViewPager"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_below="@id/ivLoading"
+	        android:layout_gravity="center"
+	        android:background="#ffffff"
+	        android:flipInterval="30"
+	        android:persistentDrawingCache="animation" />
+   </RelativeLayout>
 
 </RelativeLayout>

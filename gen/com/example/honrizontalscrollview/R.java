@@ -9,6 +9,22 @@ package com.example.honrizontalscrollview;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int gif=0x7f010000;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int gifViewStyle=0x7f010002;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int paused=0x7f010001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -23,37 +39,39 @@ public final class R {
     public static final class drawable {
         public static final int bell=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int logo=0x7f020002;
-        public static final int nav_left=0x7f020003;
-        public static final int nav_right=0x7f020004;
-        public static final int option=0x7f020005;
-        public static final int wangyi=0x7f020006;
+        public static final int loading=0x7f020002;
+        public static final int logo=0x7f020003;
+        public static final int nav_left=0x7f020004;
+        public static final int nav_right=0x7f020005;
+        public static final int option=0x7f020006;
+        public static final int wangyi=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
-        public static final int album_first_image=0x7f08000b;
-        public static final int album_second_image=0x7f08000c;
-        public static final int album_third_image=0x7f08000d;
-        public static final int btnBell=0x7f080015;
-        public static final int btnOption=0x7f080016;
-        public static final int common_brief=0x7f080010;
-        public static final int common_image=0x7f08000e;
-        public static final int common_title=0x7f08000f;
-        public static final int head_line_image=0x7f080011;
-        public static final int head_line_title=0x7f080012;
+        public static final int action_settings=0x7f080018;
+        public static final int album_first_image=0x7f08000c;
+        public static final int album_second_image=0x7f08000d;
+        public static final int album_third_image=0x7f08000e;
+        public static final int btnBell=0x7f080016;
+        public static final int btnOption=0x7f080017;
+        public static final int common_brief=0x7f080011;
+        public static final int common_image=0x7f08000f;
+        public static final int common_title=0x7f080010;
+        public static final int head_line_image=0x7f080012;
+        public static final int head_line_title=0x7f080013;
+        public static final int ivLoading=0x7f080007;
         public static final int iv_nav_indicator=0x7f080004;
         public static final int iv_nav_left=0x7f080005;
         public static final int iv_nav_right=0x7f080006;
-        public static final int lvnews=0x7f08000a;
+        public static final int lvnews=0x7f08000b;
         public static final int mHsv=0x7f080001;
-        public static final int mViewPager=0x7f080007;
+        public static final int mViewPager=0x7f080008;
         public static final int rg_nav_content=0x7f080003;
         public static final int rl_nav=0x7f080002;
         public static final int rl_tab=0x7f080000;
-        public static final int small_head_line_image=0x7f080013;
-        public static final int small_head_line_title=0x7f080014;
-        public static final int tv_tabName=0x7f080009;
-        public static final int wvWeather=0x7f080008;
+        public static final int small_head_line_image=0x7f080014;
+        public static final int small_head_line_title=0x7f080015;
+        public static final int tv_tabName=0x7f08000a;
+        public static final int wvWeather=0x7f080009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -106,8 +124,75 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
+        public static final int Widget_GifView=0x7f060002;
         /**  使新的标题栏完全延伸到对齐到原始标题栏的两边 
          */
-        public static final int titleBarStyle=0x7f060002;
+        public static final int titleBarStyle=0x7f060003;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CustomTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomTheme_gifViewStyle com.example.honrizontalscrollview:gifViewStyle}</code></td><td></td></tr>
+           </table>
+           @see #CustomTheme_gifViewStyle
+         */
+        public static final int[] CustomTheme = {
+            0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.honrizontalscrollview.R.attr#gifViewStyle}
+          attribute's value can be found in the {@link #CustomTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.example.honrizontalscrollview:gifViewStyle
+        */
+        public static final int CustomTheme_gifViewStyle = 0;
+        /** Attributes that can be used with a GifView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #GifView_gif com.example.honrizontalscrollview:gif}</code></td><td></td></tr>
+           <tr><td><code>{@link #GifView_paused com.example.honrizontalscrollview:paused}</code></td><td></td></tr>
+           </table>
+           @see #GifView_gif
+           @see #GifView_paused
+         */
+        public static final int[] GifView = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.honrizontalscrollview.R.attr#gif}
+          attribute's value can be found in the {@link #GifView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.example.honrizontalscrollview:gif
+        */
+        public static final int GifView_gif = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.honrizontalscrollview.R.attr#paused}
+          attribute's value can be found in the {@link #GifView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.honrizontalscrollview:paused
+        */
+        public static final int GifView_paused = 1;
+    };
 }

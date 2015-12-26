@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ import com.example.fragment.LaunchUIFragment;
 import com.example.honrizontalscrollview.R;
 import com.example.utils.HttpUtil;
 import com.example.utils.MyConstant;
+import com.example.view.GifView;
 import com.example.view.SyncHorizontalScrollView;
 import com.example.viewholder.BaseViewHolder;
 import com.example.viewholder.HeadLineItem;
@@ -70,6 +72,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private TabFragmentPagerAdapter mAdapter;
 	private int currentIndicatorLeft = 0;
 	
+	private ProgressDialog progress;
+	private GifView mIvLoading;
+	private Handler handler;
+	
 	public List<Article> mArticles = new ArrayList<Article>();
 
 	@Override
@@ -80,7 +86,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.main_title_bar);
 		
-		final Handler handler = new Handler() {
+		//progress=ProgressDialog.show(MainActivity.this,"加载中", "正在加载数据,请稍候...");
+		
+		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				//mArticles = new ArrayList<Article>();
@@ -99,19 +107,27 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						int type = item.getInt("type");
 						Article article = new Article(id, title, brief, content, imgUrl, type);
 						mArticles.add(article); 
-						//Log.i("internet", jsonArray.length() + "length");
-						if(i==10) {
-							Log.i("internet", "mArticle:"+mArticles.size() + "size");
-							mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mArticles);
-							mViewPager.setAdapter(mAdapter);
-						}
 					}
+					Log.i("internet", "mArticle:"+mArticles.size() + "size");
+					mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mArticles);
+					mViewPager.setAdapter(mAdapter);
+					mIvLoading.setVisibility(View.GONE);
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
 			}
 		};
 
+		loadArticles();
+		
+		findViewById();
+		initView();
+		
+		setListener();
+	}
+	
+	private void loadArticles() {
 		new Thread() {
 			public void run() {
 				try {
@@ -127,13 +143,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				}
 			}
 		}.start();
-		
-		findViewById();
-		initView();
-		
-		setListener();
 	}
-	
+
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -222,6 +233,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		
 		mOptions.setOnClickListener(this);
 		
+		
 //		mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mArticles);
 //		mViewPager.setAdapter(mAdapter);
 	}
@@ -259,6 +271,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mViewPager = (ViewPager) findViewById(R.id.mViewPager);
 		
 		mOptions = (Button) findViewById(R.id.btnOption);
+		mIvLoading = (GifView) findViewById(R.id.ivLoading);
+		mIvLoading.setMovieResource(R.drawable.loading);
+		
 		
 	}
 

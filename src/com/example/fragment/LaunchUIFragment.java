@@ -33,6 +33,8 @@ public class LaunchUIFragment extends Fragment {
 	//private ListView listView;
 	private List<Article> articles;
 	
+	private ImageView ivLoading;
+	
 	public LaunchUIFragment(List<Article> articles) {
 		super();
 		this.articles = articles;
@@ -42,9 +44,11 @@ public class LaunchUIFragment extends Fragment {
 			Bundle savedInstanceState) {
 		
 		View rootView = inflater.inflate(R.layout.fragment_selection_launch, container, false);
+		//ivLoading = (ImageView) rootView.findViewById(R.id.ivLoading);
 		ListView listView = (ListView) rootView.findViewById(R.id.lvnews);
 		ListViewAdapter listViewAdapter = new ListViewAdapter(articles, this.getActivity());
 		listView.setAdapter(listViewAdapter);
+		//ivLoading.setVisibility(View.GONE);
 		return rootView;
 	}
 	@Override

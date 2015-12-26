@@ -28,7 +28,7 @@ public class WeatherActivity extends Activity {
 		mWvWeather.setWebChromeClient(new WebChromeClient());	//处理JavaScript对话框
 		mWvWeather.setWebViewClient(new WebViewClient());	//处理各种通知和请求事件，如果不使用该句代码，将使用内置浏览器访问网页
 		mWvWeather.loadUrl("http://www.weather.com.cn/weather1d/101280101.shtml");	//设置默认显示的天气预报信息
-		mWvWeather.setInitialScale(57*4);	//放网页内容放大4倍
+		mWvWeather.setInitialScale(57);	//放网页内容放大4倍
 	}
 	
 }
