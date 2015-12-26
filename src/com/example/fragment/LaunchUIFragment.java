@@ -26,6 +26,8 @@ import com.example.activities.MainActivity;
 import com.example.domain.Article;
 import com.example.honrizontalscrollview.R;
 import com.example.utils.MyConstant;
+import com.example.view.RefreshableView;
+import com.example.view.RefreshableView.PullToRefreshListener;
 import com.example.viewholder.BaseViewHolder;
 
 public class LaunchUIFragment extends Fragment {
@@ -33,7 +35,7 @@ public class LaunchUIFragment extends Fragment {
 	//private ListView listView;
 	private List<Article> articles;
 	
-	private ImageView ivLoading;
+	private RefreshableView refreshableView;
 	
 	public LaunchUIFragment(List<Article> articles) {
 		super();
@@ -45,10 +47,21 @@ public class LaunchUIFragment extends Fragment {
 		
 		View rootView = inflater.inflate(R.layout.fragment_selection_launch, container, false);
 		//ivLoading = (ImageView) rootView.findViewById(R.id.ivLoading);
+		refreshableView = (RefreshableView) rootView.findViewById(R.id.refreshable_view);
 		ListView listView = (ListView) rootView.findViewById(R.id.lvnews);
 		ListViewAdapter listViewAdapter = new ListViewAdapter(articles, this.getActivity());
 		listView.setAdapter(listViewAdapter);
-		//ivLoading.setVisibility(View.GONE);
+		refreshableView.setOnRefreshListener(new PullToRefreshListener() {  
+            @Override  
+            public void onRefresh() {  
+                try {  
+                    Thread.sleep(3000);  
+                } catch (InterruptedException e) {  
+                    e.printStackTrace();  
+                }  
+                refreshableView.finishRefreshing();  
+            }  
+        }, 0);  
 		return rootView;
 	}
 	@Override

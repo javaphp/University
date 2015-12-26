@@ -76,6 +76,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private GifView mIvLoading;
 	private Handler handler;
 	
+	
+	
 	public List<Article> mArticles = new ArrayList<Article>();
 
 	@Override

@@ -37,40 +37,47 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int bell=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int loading=0x7f020002;
-        public static final int logo=0x7f020003;
-        public static final int nav_left=0x7f020004;
-        public static final int nav_right=0x7f020005;
-        public static final int option=0x7f020006;
-        public static final int wangyi=0x7f020007;
+        public static final int arrow=0x7f020000;
+        public static final int bell=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int loading=0x7f020003;
+        public static final int logo=0x7f020004;
+        public static final int nav_left=0x7f020005;
+        public static final int nav_right=0x7f020006;
+        public static final int option=0x7f020007;
+        public static final int wangyi=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f080018;
-        public static final int album_first_image=0x7f08000c;
-        public static final int album_second_image=0x7f08000d;
-        public static final int album_third_image=0x7f08000e;
-        public static final int btnBell=0x7f080016;
-        public static final int btnOption=0x7f080017;
-        public static final int common_brief=0x7f080011;
-        public static final int common_image=0x7f08000f;
-        public static final int common_title=0x7f080010;
-        public static final int head_line_image=0x7f080012;
-        public static final int head_line_title=0x7f080013;
+        public static final int action_settings=0x7f08001e;
+        public static final int album_first_image=0x7f08000d;
+        public static final int album_second_image=0x7f08000e;
+        public static final int album_third_image=0x7f08000f;
+        public static final int arrow=0x7f08001a;
+        public static final int btnBell=0x7f080017;
+        public static final int btnOption=0x7f080018;
+        public static final int common_brief=0x7f080012;
+        public static final int common_image=0x7f080010;
+        public static final int common_title=0x7f080011;
+        public static final int description=0x7f08001c;
+        public static final int head_line_image=0x7f080013;
+        public static final int head_line_title=0x7f080014;
         public static final int ivLoading=0x7f080007;
         public static final int iv_nav_indicator=0x7f080004;
         public static final int iv_nav_left=0x7f080005;
         public static final int iv_nav_right=0x7f080006;
-        public static final int lvnews=0x7f08000b;
+        public static final int lvnews=0x7f08000c;
         public static final int mHsv=0x7f080001;
         public static final int mViewPager=0x7f080008;
+        public static final int progress_bar=0x7f08001b;
+        public static final int pull_to_refresh_head=0x7f080019;
+        public static final int refreshable_view=0x7f08000b;
         public static final int rg_nav_content=0x7f080003;
         public static final int rl_nav=0x7f080002;
         public static final int rl_tab=0x7f080000;
-        public static final int small_head_line_image=0x7f080014;
-        public static final int small_head_line_title=0x7f080015;
+        public static final int small_head_line_image=0x7f080015;
+        public static final int small_head_line_title=0x7f080016;
         public static final int tv_tabName=0x7f08000a;
+        public static final int updated_at=0x7f08001d;
         public static final int wvWeather=0x7f080009;
     }
     public static final class layout {
@@ -84,6 +91,7 @@ containing a value of this type.
         public static final int item_small_head_line=0x7f030007;
         public static final int main_title_bar=0x7f030008;
         public static final int nav_radiogroup_item=0x7f030009;
+        public static final int pull_to_refresh=0x7f03000a;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -96,6 +104,13 @@ containing a value of this type.
         public static final int launch_click_me=0x7f050006;
         public static final int launch_intro=0x7f050005;
         public static final int nav_desc=0x7f050003;
+        public static final int not_updated_yet=0x7f05000a;
+        public static final int pull_to_refresh=0x7f050007;
+        public static final int refreshing=0x7f050009;
+        public static final int release_to_refresh=0x7f050008;
+        public static final int time_error=0x7f05000d;
+        public static final int updated_at=0x7f05000b;
+        public static final int updated_just_now=0x7f05000c;
     }
     public static final class style {
         /** 
