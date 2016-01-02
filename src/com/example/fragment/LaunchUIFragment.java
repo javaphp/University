@@ -54,12 +54,16 @@ public class LaunchUIFragment extends Fragment {
 		refreshableView.setOnRefreshListener(new PullToRefreshListener() {  
             @Override  
             public void onRefresh() {  
-                try {  
-                    Thread.sleep(3000);  
-                } catch (InterruptedException e) {  
-                    e.printStackTrace();  
-                }  
-                refreshableView.finishRefreshing();  
+                //try {  
+                    //Thread.sleep(3000);
+                	MainActivity.loadArticles(MainActivity.NOT_FIRST_LOAD);
+                //} catch (InterruptedException e) {  
+                   // e.printStackTrace();  
+                //}  
+                //if(MainActivity.LOAD_FLAG) {
+                	refreshableView.finishRefreshing();  
+                	MainActivity.LOAD_FLAG = false;
+                //}
             }  
         }, 0);  
 		return rootView;

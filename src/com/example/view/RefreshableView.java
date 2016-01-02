@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -166,6 +168,19 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 	 * 当前是否可以下拉，只有ListView滚动到头的时候才允许下拉
 	 */
 	private boolean ableToPull;
+	
+	/**
+	 * 当前是客户端自动加载true还是用户下拉刷新false，如果是用户刷新，则不显示header。
+	 */
+	private boolean firstLoad = true;
+	
+	private Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			if(msg.what == 1) {
+				header.setVisibility(View.GONE);
+			}
+		};
+	};
 
 	/**
 	 * 下拉刷新控件的构造函数，会在运行时动态添加一个下拉头的布局。
@@ -185,6 +200,11 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 		refreshUpdatedAtValue();
 		setOrientation(VERTICAL);
 		addView(header, 0);
+		if(!firstLoad) {
+			header.setVisibility(View.GONE);
+		}else {
+			firstLoad = false;
+		}
 	}
 
 	/**
@@ -279,6 +299,10 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 	 * 当所有的刷新逻辑完成后，记录调用一下，否则你的ListView将一直处于正在刷新状态。
 	 */
 	public void finishRefreshing() {
+		Message msg = new Message();
+		msg.what = 1;
+		handler.sendMessage(msg);
+		
 		currentStatus = STATUS_REFRESH_FINISHED;
 		preferences.edit().putLong(UPDATED_AT + mId, System.currentTimeMillis()).commit();
 		new HideHeaderTask().execute();

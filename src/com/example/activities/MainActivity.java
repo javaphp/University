@@ -66,16 +66,18 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private ViewPager mViewPager;
 	private Button mOptions;   //标题栏的选项按钮
 	private int indicatorWidth;
-	public static String[] tabTitle = { "头条", "娱乐", "热点", "体育", "广州",
-										"财经", "科技", "段子", "图片", "轻松一刻"};	//标题
+	public static String[] tabTitle = { "广州", "深圳", "珠海", "汕头", "东莞",
+										"佛山", "茂名", "揭阳", "潮州", "汕尾"};	//标题
 	private LayoutInflater mInflater;
 	private TabFragmentPagerAdapter mAdapter;
 	private int currentIndicatorLeft = 0;
 	
 	private ProgressDialog progress;
-	private GifView mIvLoading;
-	private Handler handler;
-	
+	//private GifView mIvLoading;
+	private static Handler handler;
+	public static boolean LOAD_FLAG = false; 
+	public static int FIRST_LOAD = 0;
+	public static int NOT_FIRST_LOAD = 1;
 	
 	
 	public List<Article> mArticles = new ArrayList<Article>();
@@ -104,16 +106,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						int id = item.getInt("id");
 						String title = item.getString("title");
 						String brief = item.getString("abstract");
-						String content = item.getString("content");
+						//String content = item.getString("content");
 						String imgUrl = item.getString("img");
 						int type = item.getInt("type");
-						Article article = new Article(id, title, brief, content, imgUrl, type);
+						Article article = new Article(id, title, brief, null, imgUrl, type);
 						mArticles.add(article); 
 					}
 					Log.i("internet", "mArticle:"+mArticles.size() + "size");
 					mAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mArticles);
 					mViewPager.setAdapter(mAdapter);
-					mIvLoading.setVisibility(View.GONE);
+					LOAD_FLAG = true;
+					//mIvLoading.setVisibility(View.GONE);
 					
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -121,7 +124,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			}
 		};
 
-		loadArticles();
+		loadArticles(FIRST_LOAD);
 		
 		findViewById();
 		initView();
@@ -129,16 +132,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		setListener();
 	}
 	
-	private void loadArticles() {
+	public static void loadArticles(final int firstLoad) {
 		new Thread() {
 			public void run() {
 				try {
-					String url = MyConstant.BASE_PATH + "articleapis";
+					String url = MyConstant.BASE_PATH + "articleapi/list?fields=id,title,abstract,img,type";
 					String gift = HttpUtil.requestByGet(url); 
 					Message msg = new Message();
 					Log.i("internet", gift + "hi");
 					Log.i("internet", "hi");
 					msg.obj = gift; 
+					msg.what = firstLoad;
 					handler.sendMessage(msg);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -273,8 +277,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mViewPager = (ViewPager) findViewById(R.id.mViewPager);
 		
 		mOptions = (Button) findViewById(R.id.btnOption);
-		mIvLoading = (GifView) findViewById(R.id.ivLoading);
-		mIvLoading.setMovieResource(R.drawable.loading);
+		//mIvLoading = (GifView) findViewById(R.id.ivLoading);
+		//mIvLoading.setMovieResource(R.drawable.loading);
 		
 		
 	}
